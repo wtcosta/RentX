@@ -14,6 +14,8 @@ import {
 import theme from './src/styles/theme';
 import { Home } from './src/scrrens/Home';
 
+import { CarDetails } from './src/scrrens/CarDetails'
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Archivo_400Regular,
@@ -29,7 +31,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <CarDetails />
     </ThemeProvider>
   );
 }
