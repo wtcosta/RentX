@@ -1,5 +1,5 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
+import { StatusBar, useWindowDimensions } from 'react-native'
 import { ConfirmButton } from '../../components/ConfirmButton'
 
 import LogoSvg from '../../assets/logo_background_gray.svg'
@@ -18,6 +18,12 @@ export function SchedelingComplete(){
 
     return (
         <Container>
+            <StatusBar
+                barStyle='light-content'
+                backgroundColor="transparent"
+                translucent
+            />
+
             <LogoSvg width={width} />
 
             <Content>
