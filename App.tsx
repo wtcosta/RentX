@@ -14,7 +14,7 @@ import {
 import theme from './src/styles/theme';
 import { Home } from './src/scrrens/Home';
 
-import { Scheduling } from './src/scrrens/Scheduling'
+import { SchedulingDetails } from './src/scrrens/SchedulingDetails'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Scheduling />
+      <SchedulingDetails />
     </ThemeProvider>
   );
 }
