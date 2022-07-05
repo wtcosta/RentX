@@ -1,7 +1,5 @@
 import React from 'react'
-import { Feather } from '@expo/vector-icons'
-import { RFValue } from 'react-native-responsive-fontsize'
-import { useTheme } from 'styled-components'
+import { ParamListBase, NavigationProp, useNavigation } from '@react-navigation/native'
 
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider'
@@ -27,22 +25,17 @@ import {
     Rent,
     Period,
     Price,
+    About,
     Acessories,
     Footer,
-    RentalPeriod,
-    CalendarIcon,
-    DateInfo,
-    DateTitle,
-    DateValue,
-    RentalPrice,
-    RentalPriceLabel,
-    RentalPriceDetails,
-    RentalPriceQuota,
-    RentalPriceTotal,
 } from './styles'
 
-export function SchedulingDetails(){
-    const theme = useTheme()
+export function CarDetails(){
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
+    function handleConfirmRental(){
+        navigation.navigate('Scheduling')
+    }
 
     return (
         <Container>
@@ -75,42 +68,16 @@ export function SchedulingDetails(){
                     <Accessory name="2 pessoas" icon={peopleSvg}/>
                 </Acessories>
 
-                <RentalPeriod>
-                    <CalendarIcon>
-                        <Feather
-                            name="calendar"
-                            size={RFValue(24)}
-                            color={theme.colors.shape}
-                        />
-                    </CalendarIcon>
-                    <DateInfo>
-                        <DateTitle>DE</DateTitle>
-                        <DateValue>18/06/2021</DateValue>
-                    </DateInfo>
+                <About>
+                    Este é automóvel desportivo. Surgiu do lendário touro de lide
+                    indultado na praça Real Maetranza de Sevilla. É um belíssimo
+                    carro para quem gosta de acelerar.
+                </About>
 
-                    <Feather
-                        name="chevron-right"
-                        size={RFValue(10)}
-                        color={theme.colors.shape}
-                    />
-
-                    <DateInfo>
-                        <DateTitle>ATÉ</DateTitle>
-                        <DateValue>18/06/2021</DateValue>
-                    </DateInfo>
-                </RentalPeriod>
-
-                <RentalPrice>
-                    <RentalPriceLabel>Total</RentalPriceLabel>
-                    <RentalPriceDetails>
-                        <RentalPriceQuota>R$ 580 x3 diarias</RentalPriceQuota>
-                        <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
-                    </RentalPriceDetails>
-                </RentalPrice>
             </Content>
 
             <Footer>
-                <Button title="Confirmar" />
+                <Button title="Escolher período do aluguel" onPress={handleConfirmRental}/>
             </Footer>
         </Container>
     )

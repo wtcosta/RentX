@@ -1,6 +1,7 @@
 import React from 'react'
 import { StatusBar, useWindowDimensions } from 'react-native'
 import { ConfirmButton } from '../../components/ConfirmButton'
+import { ParamListBase, NavigationProp, useNavigation } from '@react-navigation/native'
 
 import LogoSvg from '../../assets/logo_background_gray.svg'
 import DoneSvg from '../../assets/done.svg'
@@ -15,6 +16,11 @@ import {
 
 export function SchedelingComplete(){
     const { width } = useWindowDimensions()
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
+    function handleConfirmRental(){
+        navigation.navigate('Home')
+    }
 
     return (
         <Container>
@@ -37,7 +43,7 @@ export function SchedelingComplete(){
             </Content>
 
             <Footer>
-                <ConfirmButton title='Ok'/>
+                <ConfirmButton title='Ok' onPress={handleConfirmRental}/>
             </Footer>
         </Container>
     )

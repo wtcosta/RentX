@@ -12,9 +12,8 @@ import {
 } from '@expo-google-fonts/inter'
 
 import theme from './src/styles/theme';
-import { Home } from './src/scrrens/Home';
 
-import { SchedelingComplete } from './src/scrrens/SchedelingComplete'
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,7 +30,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SchedelingComplete />
+      <Routes />
     </ThemeProvider>
   );
 }
