@@ -36,7 +36,7 @@ export function CarDetails(){
 
 
     function handleConfirmRental(){
-        navigation.navigate('Scheduling')
+        navigation.navigate('Scheduling', { car })
     }
 
     function handleBack(){
