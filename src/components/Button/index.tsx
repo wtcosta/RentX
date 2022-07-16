@@ -9,16 +9,19 @@ import {
 interface Props {
     title: string;
     color?: string;
+    disabled?: boolean;
     onPress: () => void;
 }
 
-export function Button({title, color, onPress}: Props){
+export function Button({title, color, disabled, ...rest}: Props){
     const theme = useTheme()
 
     return (
         <Container
             color={color ? color : theme.colors.main}
-            onPress={onPress}
+            disabled={disabled}
+            style={{opacity: disabled === true ? 0.5 : 1}}
+            {...rest}
         >
             <Title>{title}</Title>
         </Container>
