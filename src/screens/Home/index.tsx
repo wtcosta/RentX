@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { StatusBar, StyleSheet } from 'react-native'
+import { StatusBar, StyleSheet, BackHandler } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
-import { ParamListBase, NavigationProp, useNavigation } from '@react-navigation/native'
+import { ParamListBase, NavigationProp, useNavigation, useFocusEffect } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons'
 import { useTheme } from 'styled-components'
 import { RectButton, PanGestureHandler } from 'react-native-gesture-handler'
@@ -9,8 +9,7 @@ import { RectButton, PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
-    useAnimatedGestureHandler,
-    withSpring
+    useAnimatedGestureHandler
 } from 'react-native-reanimated'
 
 const ButtonAnimated = Animated.createAnimatedComponent(RectButton)
@@ -86,6 +85,10 @@ export function Home(){
         fetchCars()
     }, [])
 
+    useFocusEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => { return true; })
+    })
+
     return (
         <Container>
             <StatusBar
@@ -99,7 +102,10 @@ export function Home(){
                         width={RFValue(108)}
                         height={RFValue(12)}
                     />
-                    <TotalCars>Total de {cars.length} carros</TotalCars>
+                    {
+                        !loading &&
+                        <TotalCars>Total de {cars.length} carros</TotalCars>
+                    }
                 </HeaderContent>
             </Header>
 
