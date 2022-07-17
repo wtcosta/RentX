@@ -11,6 +11,8 @@ import {
   Inter_500Medium
 } from '@expo-google-fonts/inter'
 
+import { LogBox } from 'react-native'
+
 import theme from './src/styles/theme';
 
 import { Routes } from './src/routes'
@@ -27,6 +29,10 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+
+  LogBox.ignoreLogs([
+    'ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from \'deprecated-react-native-prop-types\'.'
+  ])
 
   return (
     <ThemeProvider theme={theme}>
